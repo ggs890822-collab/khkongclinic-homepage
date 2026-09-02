@@ -207,7 +207,7 @@
         .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-800 antialiased selection:bg-brand selection:text-white pb-16 md:pb-0">
+<body class="bg-slate-50 text-gray-800 antialiased selection:bg-brand selection:text-white pb-20 md:pb-0">
 
     <div id="root"></div>
 
@@ -963,14 +963,14 @@
                                 {treatment.detail.overview}
                             </p>
 
-                            <h3 className="text-lg font-bold text-gray-900 mb-3 font-serif flex items-center gap-2">
-                                <i className="fas fa-exclamation-circle text-brand"></i> 이런 증상이 있다면 치료가 필요합니다
+                            <h3 className="text-xl font-bold text-gray-900 mb-4 font-serif flex items-center gap-2">
+                                <i className="fas fa-exclamation-circle text-brand text-2xl"></i> 이런 증상이 있다면 치료가 필요합니다
                             </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div className="grid grid-cols-1 gap-3.5">
                                 {treatment.detail.causes.map((cause, idx) => (
-                                    <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-gray-100 text-xs md:text-sm text-gray-700 leading-relaxed flex items-start gap-2">
-                                        <span className="text-brand font-bold">•</span>
-                                        <span>{cause}</span>
+                                    <div key={idx} className="p-4 md:p-5 rounded-2xl bg-slate-50 border border-gray-200 text-sm md:text-base text-gray-800 leading-relaxed flex items-start gap-3 shadow-sm">
+                                        <span className="text-brand font-black text-base md:text-lg">•</span>
+                                        <span className="font-medium">{cause}</span>
                                     </div>
                                 ))}
                             </div>
@@ -1097,8 +1097,6 @@
 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        /* 화면에 들어오면 다시 등장하고, 나가면 초기 상태로 되돌립니다.
-                           따라서 아래로 스크롤했다가 위로 올라와도 모션이 다시 재생됩니다. */
                         if (entry.isIntersecting) {
                             entry.target.classList.add('is-visible');
                         } else {
@@ -1195,7 +1193,7 @@
 
             return (
                 <div className="min-h-screen flex flex-col selection:bg-brand selection:text-white">
-                    <nav className={`fixed w-full z-40 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-gradient-to-b from-black/85 via-black/40 to-transparent py-4'}`}>
+                    <nav className={`fixed top-0 left-0 right-0 w-full z-40 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-3 md:py-4'}`}>
                         <div className="container mx-auto px-4 flex justify-between items-center">
                             <div className="flex items-center cursor-pointer shrink-0" onClick={() => scrollToSection('home')}>
                                 <div className={`font-serif font-black text-xl md:text-2xl tracking-tight ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
@@ -1216,29 +1214,29 @@
                                 <a href={NAVER_BLOG_URL} target="_blank" rel="noopener noreferrer" className="bg-green-600 hover:bg-green-700 text-white px-3.5 py-2 rounded-lg font-bold text-xs md:text-sm transition-all shadow hover:shadow-md flex items-center gap-1.5"><Icons.Blog /> 네이버 블로그</a>
                             </div>
 
-                            <button className="lg:hidden p-2 rounded-lg focus:outline-none" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="메뉴 열기">
+                            <button className="lg:hidden p-2 rounded-lg focus:outline-none flex items-center justify-center" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="메뉴 열기">
                                 <span className={isScrolled ? 'text-gray-800' : 'text-white'}>{mobileMenuOpen ? <Icons.Close /> : <Icons.Menu />}</span>
                             </button>
                         </div>
 
                         {mobileMenuOpen && (
-                            <div className="lg:hidden bg-white/98 backdrop-blur-lg border-b border-gray-200 px-6 py-5 flex flex-col gap-3.5 shadow-xl fade-in-down">
-                                <button onClick={() => scrollToSection('advantages')} className="text-left text-gray-800 py-2 font-semibold border-b border-gray-100 flex justify-between">
+                            <div className="lg:hidden bg-gray-950/98 backdrop-blur-lg border-b border-gray-800 px-6 py-5 flex flex-col gap-3.5 shadow-xl fade-in-down">
+                                <button onClick={() => scrollToSection('advantages')} className="text-left text-white py-2 font-semibold border-b border-gray-800 flex justify-between items-center">
                                     <span>경희공의 특별함</span> <i className="fas fa-chevron-right text-xs text-gray-400"></i>
                                 </button>
-                                <button onClick={() => scrollToSection('about')} className="text-left text-gray-800 py-2 font-semibold border-b border-gray-100 flex justify-between">
+                                <button onClick={() => scrollToSection('about')} className="text-left text-white py-2 font-semibold border-b border-gray-800 flex justify-between items-center">
                                     <span>의료진 소개</span> <i className="fas fa-chevron-right text-xs text-gray-400"></i>
                                 </button>
-                                <button onClick={() => scrollToSection('treatment')} className="text-left text-gray-800 py-2 font-semibold border-b border-gray-100 flex justify-between">
+                                <button onClick={() => scrollToSection('treatment')} className="text-left text-white py-2 font-semibold border-b border-gray-800 flex justify-between items-center">
                                     <span>진료 과목</span> <i className="fas fa-chevron-right text-xs text-gray-400"></i>
                                 </button>
-                                <button onClick={() => scrollToSection('equipment')} className="text-left text-gray-800 py-2 font-semibold border-b border-gray-100 flex justify-between">
+                                <button onClick={() => scrollToSection('equipment')} className="text-left text-white py-2 font-semibold border-b border-gray-800 flex justify-between items-center">
                                     <span>정밀 장비</span> <i className="fas fa-chevron-right text-xs text-gray-400"></i>
                                 </button>
-                                <button onClick={() => scrollToSection('gallery')} className="text-left text-gray-800 py-2 font-semibold border-b border-gray-100 flex justify-between">
+                                <button onClick={() => scrollToSection('gallery')} className="text-left text-white py-2 font-semibold border-b border-gray-800 flex justify-between items-center">
                                     <span>둘러보기</span> <i className="fas fa-chevron-right text-xs text-gray-400"></i>
                                 </button>
-                                <button onClick={() => scrollToSection('location')} className="text-left text-gray-800 py-2 font-semibold border-b border-gray-100 flex justify-between">
+                                <button onClick={() => scrollToSection('location')} className="text-left text-white py-2 font-semibold border-b border-gray-800 flex justify-between items-center">
                                     <span>진료시간 & 오시는 길</span> <i className="fas fa-chevron-right text-xs text-gray-400"></i>
                                 </button>
                                 
@@ -1282,19 +1280,10 @@
                                     <span className="text-yellow-400">꼼꼼한 진단과 정직한 치료</span>를 약속합니다.
                                 </h1>
                                 
-                                <p className="text-gray-300 text-base md:text-lg mb-8 max-w-2xl leading-relaxed mx-auto font-light">
+                                <p className="text-gray-300 text-base md:text-lg mb-10 max-w-2xl leading-relaxed mx-auto font-light">
                                     광명사거리역 경희공한의원은 한방내과 전문의 공건식 대표원장이 환자분의 아픔에 깊이 공감하며, 
                                     통증과 증상의 근본 원인을 세심하게 살펴 꼭 필요한 1:1 맞춤 진료를 펼칩니다.
                                 </p>
-
-                                <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10">
-                                    <button 
-                                        onClick={() => scrollToSection('treatment')}
-                                        className="w-full sm:w-auto px-8 py-3.5 bg-brand hover:bg-brandDark text-white font-bold rounded-2xl text-sm transition shadow-xl border border-white/20 flex items-center justify-center gap-2"
-                                    >
-                                        <i className="fas fa-th-large text-yellow-300"></i> 진료 과목 둘러보기
-                                    </button>
-                                </div>
 
                                 <div className="flex justify-center items-center gap-2">
                                     {HERO_IMAGES.map((_, idx) => (
@@ -1344,12 +1333,12 @@
 
                             <div className="flex flex-col items-center max-w-5xl mx-auto">
                                 <div className="w-full max-w-3xl mb-8 flex flex-col items-center reveal-on-scroll">
-                                    <div className="w-full h-[600px] sm:h-[700px] md:h-[800px] bg-gradient-to-b from-gray-950 via-brandDark to-brand rounded-3xl overflow-hidden shadow-2xl relative flex flex-col items-center justify-center text-white p-8 text-center border-4 border-white">
-                                        <img src="images/doctor/doctor-profile.jpg" alt="경희공한의원 공건식 대표원장 프로필 사진" className="max-h-[32rem] w-auto max-w-full object-contain mb-8" />
-                                        <span className="text-brandLight font-bold text-lg md:text-xl tracking-widest uppercase mb-3 bg-white/10 px-5 py-2 rounded-full border border-white/20">
-                                            대표원장 / 한방내과 전문의
-                                        </span>
-                                        <h3 className="font-serif font-black text-5xl md:text-6xl text-white tracking-tight">공건식 대표원장</h3>
+                                    <div className="w-full h-[600px] sm:h-[700px] md:h-[800px] bg-white rounded-3xl overflow-hidden shadow-2xl relative flex items-center justify-center border-4 border-white">
+                                        <img
+                                            src="images/doctor/doctor-profile.jpg"
+                                            alt="경희공한의원 공건식 대표원장 프로필 사진"
+                                            className="w-full h-full object-contain object-center"
+                                        />
                                     </div>
                                     
                                     <div className="mt-4 text-center">
@@ -1615,7 +1604,7 @@
                                     광명동, 철산동, 하안동 등 광명 전 지역 환자분들이 편하게 방문하실 수 있는 위치입니다.
                                 </p>
                             </div>
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                                 <div className="lg:col-span-7 bg-white rounded-3xl p-4 md:p-5 shadow-md border border-gray-100 flex flex-col justify-between reveal-from-left">
                                     <div className="mb-3 px-2 text-center">
                                         <p className="text-xs md:text-sm font-semibold text-gray-600">
@@ -1627,31 +1616,57 @@
                                         href="https://map.naver.com/p/search/%EA%B2%BD%ED%9D%AC%EA%B3%B5%ED%95%9C%EC%9D%98%EC%9B%90"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="block relative w-full h-[320px] md:h-[380px] rounded-2xl border border-gray-200 overflow-hidden shadow-inner group bg-slate-200"
+                                        className="block relative w-full aspect-square rounded-2xl border border-gray-200 overflow-hidden shadow-inner group bg-slate-200"
                                         aria-label="경희공한의원 네이버 지도에서 검색하기"
                                     >
                                         <img
                                             src="images/map/map.jpg"
-                                            alt="경희공한의원 위치 안내 이미지"
+                                            alt="경희공한의원 위치 안내 지도"
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                                         />
                                     </a>
                                 </div>
-                                <div className="lg:col-span-5 space-y-6 reveal-from-right">
-                                    <div className="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100">
-                                        <h3 className="text-xl font-serif font-bold text-gray-900 mb-5 flex items-center gap-2.5"><i className="far fa-clock text-brand"></i><span>진료 시간 안내</span></h3>
-                                        <div className="space-y-3 text-sm">
-                                            <div className="flex justify-between items-center border-b border-gray-100 pb-2.5"><span className="font-bold text-gray-800">평일 (월/화/수/금)</span><span className="text-brand font-black">09:30 ~ 20:00 (점심시간 1시-2시)</span></div>
-                                            <div className="flex justify-between items-center border-b border-gray-100 pb-2.5"><span className="font-bold text-gray-800">목요일</span><span className="text-red-600 font-bold">정기 휴진</span></div>
-                                            <div className="flex justify-between items-center border-b border-gray-100 pb-2.5"><span className="font-bold text-gray-800">토 / 일 / 공휴일</span><span className="text-brand font-black">09:30 ~ 15:00 (점심시간 없음)</span></div>
+                                <div className="lg:col-span-5 flex flex-col justify-between space-y-6 reveal-from-right">
+                                    <div className="bg-white p-8 md:p-10 rounded-3xl shadow-md border border-gray-100 flex-1 flex flex-col justify-center">
+                                        <h3 className="text-2xl font-serif font-bold text-gray-900 mb-6 flex items-center gap-3">
+                                            <i className="far fa-clock text-brand text-2xl"></i>
+                                            <span>진료 시간 안내</span>
+                                        </h3>
+                                        <div className="space-y-4 text-base md:text-lg">
+                                            <div className="flex justify-between items-center border-b border-gray-100 pb-3.5">
+                                                <span className="font-bold text-gray-800">평일 (월/화/수/금)</span>
+                                                <span className="text-brand font-black">09:30 ~ 20:00 <span className="text-sm font-semibold text-gray-500">(점심 1시-2시)</span></span>
+                                            </div>
+                                            <div className="flex justify-between items-center border-b border-gray-100 pb-3.5">
+                                                <span className="font-bold text-gray-800">목요일</span>
+                                                <span className="text-red-600 font-bold">정기 휴진</span>
+                                            </div>
+                                            <div className="flex justify-between items-center border-b border-gray-100 pb-1">
+                                                <span className="font-bold text-gray-800">토 / 일 / 공휴일</span>
+                                                <span className="text-brand font-black">09:30 ~ 15:00 <span className="text-sm font-semibold text-gray-500">(점심 없음)</span></span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100">
-                                        <h3 className="text-xl font-serif font-bold text-gray-900 mb-4 flex items-center gap-2.5"><i className="fas fa-map-marker-alt text-brand"></i><span>주소 & 주차 정보</span></h3>
-                                        <div className="space-y-3 text-sm">
-                                            <div><p className="font-bold text-gray-900 text-base">{ADDRESS_TEXT}</p><p className="text-xs text-gray-500 mt-1">광명사거리역 3번 출구에서 직진 1분거리(푸른약국 건물 3층)</p></div>
-                                            <div className="p-3 bg-slate-50 rounded-xl border border-gray-100 text-xs text-gray-700"><i className="fas fa-parking text-brand mr-1"></i><strong>주차 안내:</strong> 광명사거리역 크로앙스 건물 내 <strong>2시간 무료 주차 지원</strong></div>
-                                            <div className="text-gray-700 font-medium text-xs pt-1"><i className="fas fa-phone-alt text-brand mr-1.5"></i>대표 전화: <strong className="text-brand text-sm">{TEL_NUMBER}</strong></div>
+
+                                    <div className="bg-white p-8 md:p-10 rounded-3xl shadow-md border border-gray-100 flex-1 flex flex-col justify-center">
+                                        <h3 className="text-2xl font-serif font-bold text-gray-900 mb-5 flex items-center gap-3">
+                                            <i className="fas fa-map-marker-alt text-brand text-2xl"></i>
+                                            <span>주소 & 주차 정보</span>
+                                        </h3>
+                                        <div className="space-y-4 text-base">
+                                            <div>
+                                                <p className="font-bold text-gray-900 text-lg md:text-xl">{ADDRESS_TEXT}</p>
+                                                <p className="text-sm text-gray-600 mt-1.5 font-medium">광명사거리역 3번 출구에서 직진 1분거리 (푸른약국 건물 3층)</p>
+                                            </div>
+                                            <div className="p-4 bg-slate-50 rounded-2xl border border-gray-200 text-sm md:text-base text-gray-800 font-medium">
+                                                <i className="fas fa-parking text-brand mr-2 text-lg"></i>
+                                                <strong>주차 안내:</strong> 광명사거리역 크로앙스 건물 내 <strong className="text-brand">2시간 무료 주차 지원</strong>
+                                            </div>
+                                            <div className="text-gray-800 font-semibold text-base pt-1 flex items-center gap-2">
+                                                <i className="fas fa-phone-alt text-brand text-lg"></i>
+                                                <span>대표 전화:</span>
+                                                <strong className="text-brand text-lg md:text-xl font-black">{TEL_NUMBER}</strong>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1668,7 +1683,8 @@
                         </div>
                     </footer>
 
-                    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-2 py-2 flex items-center justify-around shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+                    {/* 모바일 전용 하단 네비게이션 바 (카카오톡, 블로그, 인스타그램, 네이버 예약, TOP) */}
+                    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-1 py-1.5 flex items-center justify-around shadow-[0_-4px_10px_rgba(0,0,0,0.08)]">
                         <a href={KAKAO_TALK_URL} target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center justify-center py-1 text-gray-800 active:text-kakaoText">
                             <i className="fas fa-comment text-base text-[#381E1F] bg-kakaoYellow p-1.5 rounded-full"></i>
                             <span className="text-[10px] font-bold mt-0.5">카카오톡</span>
@@ -1678,15 +1694,15 @@
                             <span className="text-[10px] font-bold mt-0.5">블로그</span>
                         </a>
                         <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center justify-center py-1 text-gray-800">
-                            <i className="fab fa-instagram text-base text-white bg-gradient-to-tr from-purple-600 via-pink-500 to-orange-400 p-1.5 rounded-full"></i>
+                            <i className="fab fa-instagram text-base text-white bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 p-1.5 rounded-full"></i>
                             <span className="text-[10px] font-bold mt-0.5">인스타그램</span>
                         </a>
                         <a href={NAVER_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center justify-center py-1 text-gray-800">
                             <i className="far fa-calendar-check text-base text-white bg-green-600 p-1.5 rounded-full"></i>
                             <span className="text-[10px] font-bold mt-0.5">네이버 예약</span>
                         </a>
-                        <button onClick={scrollToTop} className="flex-1 flex flex-col items-center justify-center py-1 text-gray-800 active:text-brand">
-                            <i className="fas fa-arrow-up text-base text-brand"></i>
+                        <button onClick={scrollToTop} className="flex-1 flex flex-col items-center justify-center py-1 text-gray-800">
+                            <i className="fas fa-arrow-up text-base text-gray-700 bg-gray-100 p-1.5 rounded-full"></i>
                             <span className="text-[10px] font-bold mt-0.5">TOP</span>
                         </button>
                     </div>
