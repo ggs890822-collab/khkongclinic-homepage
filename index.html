@@ -207,7 +207,7 @@
         .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-800 antialiased selection:bg-brand selection:text-white pb-20 md:pb-0">
+<body class="bg-slate-50 text-gray-800 antialiased selection:bg-brand selection:text-white pb-20 md:pb-0 overflow-x-hidden">
 
     <div id="root"></div>
 
@@ -1163,9 +1163,9 @@
 
             if (selectedTreatment) {
                 return (
-                    <div className="min-h-screen flex flex-col selection:bg-brand selection:text-white">
-                        <nav className="fixed w-full z-40 bg-white shadow-md py-3 border-b border-gray-100">
-                            <div className="container mx-auto px-4 flex justify-between items-center">
+                    <div className="min-h-screen flex flex-col selection:bg-brand selection:text-white overflow-x-hidden">
+                        <nav className="fixed top-0 left-0 right-0 w-full z-40 bg-white shadow-md py-3 border-b border-gray-100">
+                            <div className="w-full max-w-6xl mx-auto px-4 flex justify-between items-center">
                                 <div className="flex items-center cursor-pointer shrink-0" onClick={handleBackToTreatment}>
                                     <div className="font-serif font-black text-xl md:text-2xl tracking-tight text-gray-900">
                                         <span className="text-brand">경희공</span>한의원
@@ -1192,9 +1192,9 @@
             }
 
             return (
-                <div className="min-h-screen flex flex-col selection:bg-brand selection:text-white">
+                <div className="min-h-screen flex flex-col selection:bg-brand selection:text-white overflow-x-hidden">
                     <nav className={`fixed top-0 left-0 right-0 w-full z-40 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-3 md:py-4'}`}>
-                        <div className="container mx-auto px-4 flex justify-between items-center">
+                        <div className="w-full max-w-6xl mx-auto px-4 flex justify-between items-center overflow-hidden">
                             <div className="flex items-center cursor-pointer shrink-0" onClick={() => scrollToSection('home')}>
                                 <div className={`font-serif font-black text-xl md:text-2xl tracking-tight ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
                                     <span className={isScrolled ? 'text-brand' : 'text-yellow-400'}>경희공</span>한의원
